@@ -14,7 +14,7 @@ const run = async() => {
 
 	console.log(`Debugging
 
-	${JSON.stringify(context.payload)}`);
+	${JSON.stringify(context.payload, null , 4)}`);
 
   const repo = context.payload.respository.name;
   const owner = context.payload.repository.full_name.split('/')[0];
