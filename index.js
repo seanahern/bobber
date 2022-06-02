@@ -14,9 +14,9 @@ const run = async() => {
 
 	console.log(`Debugging
 
-	${JSON.stringify(context.payload, null , 4)}`);
+	${JSON.stringify(context.payload.repository, null , 4)}`);
 
-  const repo = context.payload.respository.name;
+  const repo = context.payload.repository.name;
   const owner = context.payload.repository.full_name.split('/')[0];
   const pullNumber = context.payload.pull_request.number;
 
