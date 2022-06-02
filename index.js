@@ -6,6 +6,8 @@ const {
   getOctokit
 } = require('@actions/github');
 
+console.log("Hello");
+
 const run = async() => {
   const token = core.getInput('token', {required: true});
   const octokit = getOctokit(token);
