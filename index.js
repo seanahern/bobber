@@ -12,9 +12,12 @@ const run = async() => {
   const token = core.getInput('token', {required: true});
   const octokit = getOctokit(token);
 
-	console.log(`Debugging
+  // Test
+  console.log("Pull request data");
+  console.log(JSON.stringify(context.payload.pull_request, null, 4));
 
-	${JSON.stringify(context.payload.repository, null , 4)}`);
+  console.log("Payload");
+  console.log(JSON.stringify(context.payload, null, 4));
 
   const repo = context.payload.repository.name;
   const owner = context.payload.repository.full_name.split('/')[0];
