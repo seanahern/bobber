@@ -13,6 +13,10 @@ const run = async() => {
   const octokit = getOctokit(token);
 
   // Test
+  
+  console.log("Number exist?");
+  console.log(context.payload.pull_request.number);
+
   console.log("Pull request data");
   console.log(JSON.stringify(context.payload.pull_request, null, 4));
 
@@ -27,7 +31,7 @@ const run = async() => {
     await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
       owner,
       repo,
-      pull_number,
+      pullNumber,
       body: "Hello"
     });
   } catch(e) {
