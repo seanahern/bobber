@@ -13,16 +13,6 @@ const run = async() => {
   const octokit = getOctokit(token);
 
   // Test
-  
-  console.log("Number exist?");
-  console.log(context.payload.pull_request.number);
-
-  console.log("Pull request data");
-  console.log(JSON.stringify(context.payload.pull_request, null, 4));
-
-  console.log("Payload");
-  console.log(JSON.stringify(context.payload, null, 4));
-
   const repo = context.payload.repository.name;
   const owner = context.payload.repository.full_name.split('/')[0];
   const pullNumber = context.payload.pull_request.number;
