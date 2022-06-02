@@ -10,6 +10,7 @@ const run = async() => {
   const token = core.getInput('token', {required: true});
   const octokit = getOctokit(token);
 
+  console.log("Pull request data");
   console.log(JSON.stringify(context.payload.pull_request, null, 4));
 
   const repo = context.payload.respository.name;
