@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-const { 
+const {
   context,
   getOctokit
 } = require('@actions/github');
@@ -11,6 +11,10 @@ console.log("Hello");
 const run = async() => {
   const token = core.getInput('token', {required: true});
   const octokit = getOctokit(token);
+
+	console.log(`Debugging
+
+	${JSON.stringify(context.payload)}`);
 
   const repo = context.payload.respository.name;
   const owner = context.payload.repository.full_name.split('/')[0];
