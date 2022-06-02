@@ -23,7 +23,8 @@ const run = async() => {
       owner,
       repo,
       issue_number,
-      body: "Hello"
+      body: "Hello",
+      username: "seanahern"
     });
   } catch(e) {
 
