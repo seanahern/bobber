@@ -1,0 +1,16 @@
+{
+  "name": "bobber",
+  "version": "1.0.0",
+  "description": "Check and poke PR titles",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Sean Ahern",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.8.2",
+    "@actions/github": "^5.0.3"
+  }
+}
