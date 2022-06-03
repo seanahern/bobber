@@ -20,6 +20,7 @@ const run = async() => {
 
   console.log("title");
   const title = context.payload.pull_request.title;
+  console.log(title);
   console.log("Contain Jira ID?", (title).match(/[A-Z0-9]+-\d+/));
 
   var issue_number = pullNumber;
@@ -28,8 +29,7 @@ const run = async() => {
       owner,
       repo,
       issue_number,
-      body: "Hello",
-      username: "seanahern"
+      body: "Hello"
     });
   } catch(e) {
 
