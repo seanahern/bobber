@@ -32,6 +32,7 @@ const run = async() => {
 
     var message = ""
     
+    // Damn continuity
     var issue_number = pullNumber;
     var pull_number = pullNumber;
 
