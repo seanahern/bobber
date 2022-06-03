@@ -9,14 +9,11 @@ const {
 const JIRA_REGEX = /[A-Z0-9]+-\d+/;
 const BODY_JIRA_REGEX = /[A-Z0-9]+-\d+/g;
 
-console.log("Hello");
-
 const run = async() => {
   try {
     const token = core.getInput('token', {required: true});
     const octokit = getOctokit(token);
 
-    // Test
     const repo = context.payload.repository.name;
     const owner = context.payload.repository.full_name.split('/')[0];
     const pullNumber = context.payload.pull_request.number;
@@ -39,11 +36,10 @@ const run = async() => {
 
     if(titleContainsJiraId) {
       console.log("Good to go! No action");
-      return false;
     }
 
     if(!titleContainsJiraId && !bodyContainsJiraId) {
-      // message = "No JIRA ID found in PR title or body. Please add";
+      console.log("No JIRA ID found in PR title or body. Please add");
     }
 
     if(!titleContainsJiraId && bodyContainsJiraId) {
@@ -59,11 +55,10 @@ const run = async() => {
         owner,
         repo,
         issue_number,
-        body: "Updating PR with Jira ID from PR description"
+        body: "Updating title with Jira ID from PR description"
       });
     }
   } catch(e) {
-
     core.setFailed(e.message);
   }
 }
