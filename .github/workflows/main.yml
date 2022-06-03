@@ -1,9 +1,9 @@
-on: [push, workflow_dispatch, pull_request]
+on: [workflow_dispatch, pull_request]
 
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Jira ID Title
     steps:
       # To use this repository's private action,
       # you must check out the repository
@@ -12,11 +12,8 @@ jobs:
       - name: npm install
         run: npm ci
         working-directory: ./
-      - name: Hello world action step
+      - name: Update title if Jira ID found
         uses: ./ # Uses an action in the root directory
         id: hello
         with:
-          who-to-greet: 'Mona the Octocat'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
