@@ -25,7 +25,8 @@ const run = async() => {
     const title = context.payload.pull_request.title;
     const body = context.payload.pull_request.body;
     let titleContainsJiraId = (title).match(JIRA_REGEX) !== null;
-    let bodyContainsJiraId = (body).match(BODY_JIRA_REGEX) !== null;
+    let body_regex = (body).match(BODY_JIRA_REGEX);
+    let bodyContainsJiraId = body_regex !== null;
     console.log("Title is: ", title)
     console.log("Title Contain Jira ID? ", titleContainsJiraId);
     console.log("Body Contain Jira ID? ", bodyContainsJiraId);
@@ -46,8 +47,8 @@ const run = async() => {
     }
 
     if(!titleContainsJiraId && bodyContainsJiraId) {
-      console.log("Body contains", bodyContainsJiraId);
-      var jiraID = bodyContainsJiraId[0];
+      console.log("Body contains", body_regex);
+      var jiraID = body_regex[0];
       await octokit.rest.pulls.update({
         owner,
         repo,
