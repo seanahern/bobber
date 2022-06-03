@@ -17,6 +17,11 @@ const run = async() => {
   const owner = context.payload.repository.full_name.split('/')[0];
   const pullNumber = context.payload.pull_request.number;
   console.log([repo, owner])
+
+  console.log("title");
+  const title = context.payload.pull_request.title;
+  console.log("Contain Jira ID?", (title).match(/[A-Z0-9]+-\d+/));
+
   var issue_number = pullNumber;
   try {
     await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
