@@ -46,6 +46,7 @@ const run = async() => {
     }
 
     if(!titleContainsJiraId && bodyContainsJiraId) {
+      console.log("Body contains", bodyContainsJiraId);
       var jiraID = bodyContainsJiraId[0];
       await octokit.rest.pulls.update({
         owner,
