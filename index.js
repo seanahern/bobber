@@ -32,6 +32,14 @@ const run = async() => {
   var message = ""
   
   var issue_number = pullNumber;
+  var pull_number = pullNumber;
+
+  octokit.rest.pulls.update({
+    owner,
+    repo,
+    pull_number,
+    title: "FY22-1290 " + title
+  });
   try {
     await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
       owner,
